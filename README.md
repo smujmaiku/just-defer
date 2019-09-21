@@ -11,7 +11,7 @@ Just defer your callbacks!
 
 ## Installation
 
-`npm i smujmaiku/just-defer`
+`npm i just-defer`
 
 ## Usage
 
