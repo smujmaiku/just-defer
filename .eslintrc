@@ -3,6 +3,9 @@
 	"plugins": [
 		"standard"
 	],
+	"globals": {
+		"define": true,
+	},
 	"rules": {
 		"semi": [
 			"error",
