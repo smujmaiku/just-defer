@@ -5,8 +5,12 @@
  */
 
 type JustDeferResolve = (value?: unknown) => void;
-type JustDeferReject = (reason: Error) => void;
-type JustDeferCallback = (error?: Error, result?: unknown) => void;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type JustDeferReject = (reason: any) => void;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type JustDeferCallback = (reason?: any, result?: unknown) => void;
+
+const INIT_ERROR_MSG = 'JustdDefer callbacks failed to register';
 
 interface JustDefer {
 	resolve: JustDeferResolve;
@@ -16,10 +20,8 @@ interface JustDefer {
 }
 
 export default function justDefer(): JustDefer {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	let resolve: JustDeferResolve = (value?: unknown) => { return; };
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/no-explicit-any
-	let reject: JustDeferReject = (reason?: any) => { return; };
+	let resolve: JustDeferResolve = (value?) => { console.trace(INIT_ERROR_MSG, value); };
+	let reject: JustDeferReject = (reason?) => { console.trace(INIT_ERROR_MSG, reason); };
 
 	const promise: Promise<unknown> = new Promise((resolve_, reject_) => {
 		resolve = resolve_;
