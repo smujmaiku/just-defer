@@ -1,17 +1,17 @@
 {
   "name": "just-defer",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Create a simple defer",
-  "main": "index.js",
+  "main": "/lib/just-defer.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "lint": "eslint .",
+    "build": "tsc",
+    "lint": "eslint '*/**/*.ts'",
     "test": "jest --watch",
     "test:ci": "jest",
-    "test:coverage": "jest --coverage",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -24,13 +24,14 @@
   },
   "homepage": "https://github.com/smujmaiku/just-defer#readme",
   "devDependencies": {
-    "coveralls": "^3.0.2",
-    "eslint": "^5.13.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.0.0"
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^14.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
+    "jest": "^26.4.2",
+    "typescript": "^4.0.2"
   }
 }

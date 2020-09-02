@@ -1,4 +1,4 @@
-const justDefer = require('./just-defer');
+import justDefer from './just-defer';
 
 describe('just-defer', () => {
 	it('should resolve', async () => {

@@ -42,10 +42,9 @@ const passwd = await promise;
 console.log('passwd contents', passwd);
 ```
 
-
 ## License
 
-Copyright (c) 2019, Michael Szmadzinski. (MIT License)
+Copyright (c) 2020, Michael Szmadzinski. (MIT License)
 
 [travis-image]: https://travis-ci.org/smujmaiku/just-defer.svg?branch=master
 [travis-url]: https://travis-ci.org/smujmaiku/just-defer
