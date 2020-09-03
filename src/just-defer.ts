@@ -19,24 +19,24 @@ interface JustDefer {
 	promise: Promise<unknown>;
 }
 
-export default function justDefer(): JustDefer {
-	let resolve: JustDeferResolve = (value?) => { console.trace(INIT_ERROR_MSG, value); };
-	let reject: JustDeferReject = (reason?) => { console.trace(INIT_ERROR_MSG, reason); };
+module.exports = function justDefer(): JustDefer {
+	const defer: JustDefer = {
+		// Unreachable functions to init interface
+		resolve: (value?) => { console.trace(INIT_ERROR_MSG, value); },
+		reject: (reason?) => { console.trace(INIT_ERROR_MSG, reason); },
+		callback: (reason?, value?) => { console.trace(INIT_ERROR_MSG, reason, value); },
+		promise: new Promise((resolve) => { resolve(); }),
+	};
 
-	const promise: Promise<unknown> = new Promise((resolve_, reject_) => {
-		resolve = resolve_;
-		reject = reject_;
+	defer.promise = new Promise((resolve, reject) => {
+		defer.resolve = resolve;
+		defer.reject = reject;
 	});
 
-	const callback: JustDeferCallback = (reason?, value?) => {
-		if (reason) return reject(reason);
-		resolve(value);
+	defer.callback = (reason?, value?) => {
+		if (reason) return defer.reject(reason);
+		defer.resolve(value);
 	};
 
-	return {
-		resolve,
-		reject,
-		callback,
-		promise,
-	};
+	return defer;
 }
