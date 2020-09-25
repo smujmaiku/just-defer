@@ -1,8 +1,9 @@
 {
   "name": "just-defer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Create a simple defer",
   "main": "lib/just-defer.js",
+  "types": "lib/just-defer.d.ts",
   "directories": {
     "lib": "lib"
   },
