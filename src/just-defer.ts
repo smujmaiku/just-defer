@@ -19,13 +19,13 @@ interface JustDefer {
 	promise: Promise<unknown>;
 }
 
-module.exports = function justDefer(): JustDefer {
+function justDefer(): JustDefer {
+	/* istanbul ignore next: imposible to enter */
 	const defer: JustDefer = {
-		// Unreachable functions to init interface
 		resolve: (value?) => { console.trace(INIT_ERROR_MSG, value); },
 		reject: (reason?) => { console.trace(INIT_ERROR_MSG, reason); },
 		callback: (reason?, value?) => { console.trace(INIT_ERROR_MSG, reason, value); },
-		promise: new Promise((resolve) => { resolve(); }),
+		promise: new Promise((resolve) => { return; }),
 	};
 
 	defer.promise = new Promise((resolve, reject) => {
@@ -40,3 +40,7 @@ module.exports = function justDefer(): JustDefer {
 
 	return defer;
 }
+
+justDefer.justDefer = justDefer;
+justDefer.default = justDefer;
+export = justDefer;
