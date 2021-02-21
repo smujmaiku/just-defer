@@ -4,38 +4,36 @@
  * MIT Licensed
  */
 
-type JustDeferResolve = (value?: unknown) => void;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type JustDeferReject = (reason: any) => void;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type JustDeferCallback = (reason?: any, result?: unknown) => void;
+type JustDeferResolve<T = unknown> = (value: T | PromiseLike<T>) => void;
+type JustDeferReject = (reason: Error) => void;
+type JustDeferCallback<T = unknown> = (reason?: Error, result?: T) => void;
 
 const INIT_ERROR_MSG = 'JustdDefer callbacks failed to register';
 
-interface JustDefer {
-	resolve: JustDeferResolve;
+interface JustDefer<T = unknown> {
+	resolve: JustDeferResolve<T>;
 	reject: JustDeferReject;
-	callback: JustDeferCallback
-	promise: Promise<unknown>;
+	callback: JustDeferCallback<T>;
+	promise: Promise<T>;
 }
 
-function justDefer(): JustDefer {
+function justDefer<T = unknown>(): JustDefer<T> {
 	/* istanbul ignore next: imposible to enter */
-	const defer: JustDefer = {
+	const defer: JustDefer<T> = {
 		resolve: (value?) => { console.trace(INIT_ERROR_MSG, value); },
 		reject: (reason?) => { console.trace(INIT_ERROR_MSG, reason); },
 		callback: (reason?, value?) => { console.trace(INIT_ERROR_MSG, reason, value); },
-		promise: new Promise((resolve) => { return; }),
+		promise: new Promise(() => { return; }),
 	};
 
-	defer.promise = new Promise((resolve, reject) => {
+	defer.promise = new Promise<T>((resolve, reject) => {
 		defer.resolve = resolve;
 		defer.reject = reject;
 	});
 
 	defer.callback = (reason?, value?) => {
 		if (reason) return defer.reject(reason);
-		defer.resolve(value);
+		defer.resolve(value as T);
 	};
 
 	return defer;
