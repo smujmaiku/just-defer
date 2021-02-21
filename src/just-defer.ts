@@ -1,6 +1,6 @@
 /*!
  * Just Defer <https://github.com/smujmaiku/just-defer>
- * Copyright(c) 2020 Michael Szmadzinski
+ * Copyright(c) 2021 Michael Szmadzinski
  * MIT Licensed
  */
 
@@ -44,3 +44,13 @@ function justDefer(): JustDefer {
 justDefer.justDefer = justDefer;
 justDefer.default = justDefer;
 export = justDefer;
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace justDefer {
+	export {
+		JustDeferResolve,
+		JustDeferReject,
+		JustDeferCallback,
+		JustDefer,
+	}
+}

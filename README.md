@@ -1,8 +1,5 @@
 # Just Defer
 
-[![build status][travis-image]][travis-url]
-[![coverage status][codecov-image]][codecov-url]
-
 Do you have a lot of callbacks but you like Promises more?
 Have you written the same one function into many projects?
 Would you like to use `Async` more?
@@ -44,9 +41,4 @@ console.log('passwd contents', passwd);
 
 ## License
 
-Copyright (c) 2020, Michael Szmadzinski. (MIT License)
-
-[travis-image]: https://travis-ci.org/smujmaiku/just-defer.svg?branch=master
-[travis-url]: https://travis-ci.org/smujmaiku/just-defer
-[codecov-image]: https://coveralls.io/repos/github/smujmaiku/just-defer/badge.svg
-[codecov-url]: https://coveralls.io/github/smujmaiku/just-defer
+Copyright (c) 2021, Michael Szmadzinski. (MIT License)
