@@ -8,8 +8,6 @@ type JustDeferResolve<T = unknown> = (value: T | PromiseLike<T>) => void;
 type JustDeferReject = (reason: Error) => void;
 type JustDeferCallback<T = unknown> = (reason?: Error, result?: T) => void;
 
-const INIT_ERROR_MSG = 'JustdDefer callbacks failed to register';
-
 interface JustDefer<T = unknown> {
 	resolve: JustDeferResolve<T>;
 	reject: JustDeferReject;
@@ -18,12 +16,11 @@ interface JustDefer<T = unknown> {
 }
 
 function justDefer<T = unknown>(): JustDefer<T> {
-	/* istanbul ignore next: imposible to enter */
 	const defer: JustDefer<T> = {
-		resolve: (value?) => { console.trace(INIT_ERROR_MSG, value); },
-		reject: (reason?) => { console.trace(INIT_ERROR_MSG, reason); },
-		callback: (reason?, value?) => { console.trace(INIT_ERROR_MSG, reason, value); },
-		promise: new Promise(() => { return; }),
+		resolve: null!,
+		reject: null!,
+		callback: null!,
+		promise: null!,
 	};
 
 	defer.promise = new Promise<T>((resolve, reject) => {
@@ -43,12 +40,6 @@ justDefer.justDefer = justDefer;
 justDefer.default = justDefer;
 export = justDefer;
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace justDefer {
-	export {
-		JustDeferResolve,
-		JustDeferReject,
-		JustDeferCallback,
-		JustDefer,
-	}
+	export { JustDeferResolve, JustDeferReject, JustDeferCallback, JustDefer };
 }

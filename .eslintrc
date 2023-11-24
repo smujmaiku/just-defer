@@ -1,44 +1,36 @@
 {
 	"env": {
-		"browser": true,
 		"es6": true,
 		"node": true,
 		"jest": true
 	},
-	"globals": {
-		"browser": false
-	},
+	"plugins": [
+		"@typescript-eslint",
+		"prettier"
+	],
+	"extends": [
+		"airbnb-typescript/base",
+		"plugin:prettier/recommended"
+	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaVersion": 2020,
 		"sourceType": "module",
+		"project": "./tsconfig.eslint.json"
 	},
-	"settings": {
-		"import/resolver": {
-			"node": {
-				"paths": [
-					"src"
-				]
-			}
-		}
-	},
-	"extends": [
-		"plugin:@typescript-eslint/recommended"
-	],
 	"rules": {
-		"indent": [
-			2,
-			"tab"
-		],
-		"no-tabs": 0,
+		"@typescript-eslint/no-explicit-any": 2,
 		"no-restricted-syntax": [
 			"error",
 			"ForInStatement",
 			"LabeledStatement",
 			"WithStatement"
 		],
-		"no-multiple-empty-lines": "warn",
-		"import/no-named-as-default": 0
-		// "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+		"no-continue": 0,
+		"@typescript-eslint/require-await": 0,
+		"import/no-named-as-default": 0,
+		// something about replace-ts-export-assignment
+		"import/extensions": 0,
+		"import/no-extraneous-dependencies": 0
 	}
 }

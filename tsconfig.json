@@ -4,7 +4,7 @@
 		"module": "commonjs",
 		"strict": true,
 		"declaration": true,
-		"outDir": "./lib"
+		"outDir": "./build"
 	},
 	"include": [
 		"./src"
@@ -12,7 +12,7 @@
 	"exclude": [
 		"node_modules",
 		"coverage",
-		"lib",
+		"build",
 		"**/*.test.*"
 	]
 }
