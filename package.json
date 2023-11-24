@@ -1,6 +1,6 @@
 {
   "name": "just-defer",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "Create a simple defer",
   "main": "build/just-defer.js",
   "types": "build/just-defer.d.ts",
