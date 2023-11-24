@@ -43,12 +43,6 @@ justDefer.justDefer = justDefer;
 justDefer.default = justDefer;
 export = justDefer;
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace justDefer {
-	export {
-		JustDeferResolve,
-		JustDeferReject,
-		JustDeferCallback,
-		JustDefer,
-	}
+	export { JustDeferResolve, JustDeferReject, JustDeferCallback, JustDefer };
 }
