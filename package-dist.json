@@ -1,0 +1,4 @@
+{
+	"main": "./just-defer.js",
+	"types": "./just-defer.d.ts"
+}
